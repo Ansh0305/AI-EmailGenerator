@@ -1,0 +1,18 @@
+{
+  "name": "emailwriter",
+  "version": "1.0.0",
+  "description": "AI powered email writer",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Sirigiri Sai Ansh Raj",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "openai": "^6.5.0"
+  }
+}
