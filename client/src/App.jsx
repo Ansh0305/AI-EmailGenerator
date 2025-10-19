@@ -5,7 +5,6 @@ import InputForm from "./components/InputForm";
 import ToneSelection from "./components/ToneSelection";
 import OutputSelection from "./components/OutputSelection";
 
-
 export default function App() {
   const [rawThoughts, setRawThoughts] = useState("");
   const [replyingTo, setReplyingTo] = useState("");
@@ -22,8 +21,14 @@ export default function App() {
       setError("Please enter your thoughts before generating an email");
       return;
     }
-    
-  }
+  };
+
+  // Copy Function
+  const copyToClickboard = () => {
+    navigator.clipboard.writeText(generatedEmail);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50">
@@ -54,7 +59,10 @@ export default function App() {
         </div>
 
         {/* Output */}
-        <OutputSelection />
+        <OutputSelection
+          generatedEmail={generatedEmail}
+          copyToClickboard={copyToClickboard}
+        />
       </div>
     </div>
   );
