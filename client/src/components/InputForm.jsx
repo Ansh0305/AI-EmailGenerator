@@ -8,6 +8,7 @@ export default function InputForm({
   setReplyingTo,
   showReplySection,
   setShowReplySection,
+  handleKeyPress
 }) {
   return (
     <div className="space-y-6">
@@ -21,6 +22,7 @@ export default function InputForm({
 
         <textarea
           value={rawThoughts}
+          onKeyDown={handleKeyPress}
           onChange={(e) => setRawThoughts(e.target.value)}
           placeholder="What' s on your mind.....eg: need a mail/letter on sick leave"
           className="w-full h-40 px-4 py-2 border-2 border-slate-200 rounded-xl focus:border-blue-400 focus:outline-none resize-none text-slate-700 placeholder-slate-400 transition-colors"
@@ -45,7 +47,7 @@ export default function InputForm({
               name=""
               id=""
               value={replyingTo}
-              onChange={(e) => setShowReplySection(e.target.value)}
+              onChange={(e) => setReplyingTo(e.target.value)}
             />
           </div>
         )}
