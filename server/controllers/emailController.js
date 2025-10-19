@@ -45,7 +45,7 @@ exports.generateEmail = async (req, res, next) => {
 
     if (!emailContent) {
       return res.status(500).json({
-        sucess: false,
+        success: false,
         message:
           "OpenAI returned empty content. Check your prompt or API usage.",
       });
