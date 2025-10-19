@@ -1,17 +1,29 @@
+import { useState } from "react";
+
 import Header from "./components/Header";
 import InputForm from "./components/InputForm";
 import ToneSelection from "./components/ToneSelection";
 import OutputSelection from "./components/OutputSelection";
 
+
 export default function App() {
   const [rawThoughts, setRawThoughts] = useState("");
   const [replyingTo, setReplyingTo] = useState("");
-  const [Tone, setTone] = useState("professional");
-  const [generateEmail, setGenerateEmail] = useState("");
+  const [tone, setTone] = useState("professional");
+  const [generatedEmail, setGeneratedEmail] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
   const [showReplySection, setShowReplySection] = useState(false);
   const [error, setError] = useState("");
+
+  // Generating Email
+  const generateEmail = async () => {
+    if (!rawThoughts.trim()) {
+      setError("Please enter your thoughts before generating an email");
+      return;
+    }
+    
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50">
@@ -32,7 +44,13 @@ export default function App() {
           />
 
           {/* Tone Selection  */}
-          <ToneSelection />
+          <ToneSelection
+            tone={tone}
+            setTone={setTone}
+            isGenerating={isGenerating}
+            generateEmail={generateEmail}
+            error={error}
+          />
         </div>
 
         {/* Output */}
