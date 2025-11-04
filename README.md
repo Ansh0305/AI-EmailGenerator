@@ -96,9 +96,9 @@ Build Tool: Vite
 
 Package Manager: npm / yarn
 
-LLM Integration: [Specify Library/SDK, e.g., @google/genai, openai, axios for API calls]
+LLM Integration: OpenAI
 
-Styling: [e.g., CSS Modules, Tailwind CSS, Styled Components]
+Styling: Tailwind CSS
 
 ### 🤝 Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
@@ -117,6 +117,7 @@ Open a Pull Request
 Distributed under the MIT License. See LICENSE for more information.
 
 ### 📞 Contact
-Your Name or Handle - [@YourSocialMediaHandle (optional)] - [youremail@example.com]
+Your Name or Handle  - [saiansh2016@gmail.com]
 
 Project Link: https://github.com/Ansh0305/AI-EmailGenerator.git
+
