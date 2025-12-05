@@ -117,7 +117,8 @@ Open a Pull Request
 Distributed under the MIT License. See LICENSE for more information.
 
 ### 📞 Contact
-Your Name or Handle  - [saiansh2016@gmail.com]
+Ansh  - [saiansh2016@gmail.com]
 
 Project Link: https://github.com/Ansh0305/AI-EmailGenerator.git
+
 
