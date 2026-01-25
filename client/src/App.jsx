@@ -32,22 +32,22 @@ export default function App() {
 
       const response = await fetch(`${API_URL}/api/generate-email`, {
         method: "POST",
-        headers: {"Content-Type" : "application/json"},
-        body: JSON.stringify({rawThoughts, tone, replyingTo})
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rawThoughts, tone, replyingTo })
       })
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to generate email"); 
+        throw new Error(data.message || "Failed to generate email");
       }
       setGeneratedEmail(data.email);
-      
+
     } catch (error) {
       if (error.message.includes("Failed to fetch")) {
         setError("Cannot connect to backend. Make sure it's running on port 5000");
       } else setError(error.message)
-    } finally{
+    } finally {
       setIsGenerating(false)
     }
   };
@@ -62,8 +62,7 @@ export default function App() {
 
   // CTRL + ENTER 
   const handleKeyPress = (e) => {
-  if ((error.ctrlKey || error.metaKey) && error.key === "Enter") generateEmail();
-    
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") generateEmail();
   }
 
   return (
