@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import InputForm from "./components/InputForm";
 import ToneSelection from "./components/ToneSelection";
 import OutputSelection from "./components/OutputSelection";
+import { useTheme } from "./hooks/useTheme";
 
 export default function App() {
   const [rawThoughts, setRawThoughts] = useState("");
@@ -15,9 +16,10 @@ export default function App() {
   const [showReplySection, setShowReplySection] = useState(false);
   const [error, setError] = useState("");
 
+  const { theme, toggleTheme } = useTheme();
+
   const API_URL = "http://localhost:5000"
 
-  // Generating Email
   const generateEmail = async () => {
     if (!rawThoughts.trim()) {
       setError("Please enter your thoughts before generating an email");
@@ -29,7 +31,6 @@ export default function App() {
     setError("");
 
     try {
-
       const response = await fetch(`${API_URL}/api/generate-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -52,28 +53,22 @@ export default function App() {
     }
   };
 
-  // Copy Function
   const copyToClickboard = () => {
     navigator.clipboard.writeText(generatedEmail);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
-
-  // CTRL + ENTER 
   const handleKeyPress = (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === "Enter") generateEmail();
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50">
-      {/* Header */}
-      <Header />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors">
+      <Header theme={theme} toggleTheme={toggleTheme} />
 
-      {/* Main Content */}
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* Input Section */}
           <InputForm
             rawThoughts={rawThoughts}
             replyingTo={replyingTo}
@@ -84,7 +79,6 @@ export default function App() {
             handleKeyPress={handleKeyPress}
           />
 
-          {/* Tone Selection  */}
           <ToneSelection
             tone={tone}
             setTone={setTone}
@@ -94,7 +88,6 @@ export default function App() {
           />
         </div>
 
-        {/* Output */}
         <OutputSelection
           generatedEmail={generatedEmail}
           copyToClickboard={copyToClickboard}
