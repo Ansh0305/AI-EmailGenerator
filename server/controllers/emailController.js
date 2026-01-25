@@ -27,7 +27,7 @@ exports.generateEmail = async (req, res, next) => {
         - Start directly with email content`;
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4.1-mini",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
